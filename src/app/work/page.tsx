@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { PageHero } from "@/components/ui/page-hero";
 import { ProjectCard } from "@/components/work/project-card";
 import { Section, SectionHeader } from "@/components/ui/section";
 import { SectionReveal } from "@/components/motion/section-reveal";
@@ -16,39 +17,44 @@ export default function WorkPage() {
   }, [filter]);
 
   return (
-    <Section className="pt-12 md:pt-16">
-      <SectionReveal>
-        <SectionHeader
-          align="left"
-          eyebrow="Portfolio"
-          title="Case studies"
-          description="Production systems across SaaS, compliance, and e-learning — with honest scope and real tech stacks."
-        />
-      </SectionReveal>
+    <>
+      <PageHero band="dark">
+        <SectionReveal>
+          <SectionHeader
+            align="left"
+            eyebrow="Portfolio"
+            title="Case studies"
+            description="Production systems across SaaS, compliance, and e-learning — with honest scope and real tech stacks."
+            className="mb-0"
+          />
+        </SectionReveal>
+      </PageHero>
 
-      <div className="mb-10 flex flex-wrap gap-2">
-        {projectCategories.map((cat) => (
-          <button
-            key={cat}
-            type="button"
-            onClick={() => setFilter(cat)}
-            className={cn(
-              "rounded-full border px-4 py-1.5 text-sm font-medium transition",
-              filter === cat
-                ? "border-primary bg-primary/10 text-primary"
-                : "border-border text-muted hover:text-foreground",
-            )}
-          >
-            {cat}
-          </button>
-        ))}
-      </div>
+      <Section band="light">
+        <div className="mb-10 flex flex-wrap gap-2">
+          {projectCategories.map((cat) => (
+            <button
+              key={cat}
+              type="button"
+              onClick={() => setFilter(cat)}
+              className={cn(
+                "rounded-full border px-4 py-1.5 text-sm font-medium transition",
+                filter === cat
+                  ? "border-primary bg-primary/10 text-primary"
+                  : "border-border bg-surface text-muted hover:text-foreground",
+              )}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
 
-      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-        {filtered.map((project) => (
-          <ProjectCard key={project.slug} project={project} />
-        ))}
-      </div>
-    </Section>
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {filtered.map((project) => (
+            <ProjectCard key={project.slug} project={project} />
+          ))}
+        </div>
+      </Section>
+    </>
   );
 }

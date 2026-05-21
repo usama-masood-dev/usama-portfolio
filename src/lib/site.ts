@@ -36,13 +36,26 @@ export const site = {
   links: {
     email: "mailto:usamamasood.dev@gmail.com",
     linkedin: "https://www.linkedin.com/in/usama-masood",
-    github: "https://github.com/usamamasood",
+    github: "https://github.com/usama-masood-dev",
     upwork: "",
+    fiverr: "",
   },
   calendly: normalizeCalendlyUrl(process.env.NEXT_PUBLIC_CALENDLY_URL),
   formspree: normalizeFormspreeId(process.env.NEXT_PUBLIC_FORMSPREE_ID),
   resumePath: "/resume.pdf",
 } as const;
+
+type SocialKey = "linkedin" | "github" | "upwork" | "fiverr";
+
+/** Profiles with a URL — add Upwork/Fiverr in site.links when you have them */
+export const socialProfiles = (
+  [
+    { key: "linkedin" as const, label: "LinkedIn", href: site.links.linkedin },
+    { key: "github" as const, label: "GitHub", href: site.links.github },
+    { key: "upwork" as const, label: "Upwork", href: site.links.upwork },
+    { key: "fiverr" as const, label: "Fiverr", href: site.links.fiverr },
+  ] satisfies { key: SocialKey; label: string; href: string }[]
+).filter((p) => Boolean(p.href.trim()));
 
 export const navLinks = [
   { href: "/", label: "Home" },

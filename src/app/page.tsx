@@ -4,8 +4,10 @@ import { CatalogCard } from "@/components/catalog/catalog-card";
 import { BentoHighlight } from "@/components/home/bento-highlight";
 import { HeroVisual } from "@/components/home/hero-visual";
 import { ProcessTimeline } from "@/components/home/process-timeline";
+import { SocialLinks } from "@/components/layout/social-links";
 import { ProofStrip } from "@/components/home/proof-strip";
 import { ProjectCarousel } from "@/components/home/project-carousel";
+import { SectionBackdrop } from "@/components/ui/section-backdrop";
 import { SectionReveal, StaggerChildren, StaggerItem } from "@/components/motion/section-reveal";
 import { TechStackLogos } from "@/components/tech/tech-stack-logos";
 import { Accordion } from "@/components/ui/accordion";
@@ -18,8 +20,8 @@ import { faqs, site, whatIBuild } from "@/lib/site";
 export default function HomePage() {
   return (
     <>
-      <section className="relative overflow-hidden border-b border-border">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/15 via-transparent to-transparent" />
+      <section className="relative overflow-hidden border-b border-border/50 bg-section-dark">
+        <SectionBackdrop variant="hero" />
         <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:px-8 lg:py-24">
           <SectionReveal>
             <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-sm text-primary">
@@ -40,22 +42,23 @@ export default function HomePage() {
                 View my work
               </Button>
             </div>
+            <SocialLinks className="mt-6" iconSize="sm" />
           </SectionReveal>
           <HeroVisual />
         </div>
       </section>
 
-      <Section className="border-b border-border bg-surface/50 py-12">
+      <Section band="light" className="py-12 md:py-14">
         <ProofStrip />
       </Section>
 
-      <Section>
+      <Section band="dark">
         <SectionReveal>
           <BentoHighlight />
         </SectionReveal>
       </Section>
 
-      <Section id="expertise">
+      <Section id="expertise" band="light">
         <SectionReveal>
           <SectionHeader
             eyebrow="Expertise"
@@ -76,7 +79,7 @@ export default function HomePage() {
         </StaggerChildren>
       </Section>
 
-      <Section id="catalog" className="bg-surface/30">
+      <Section id="catalog" band="dark">
         <SectionReveal>
           <SectionHeader
             eyebrow="Deliverables"
@@ -100,7 +103,7 @@ export default function HomePage() {
         </div>
       </Section>
 
-      <Section id="work">
+      <Section id="work" band="light">
         <SectionReveal>
           <SectionHeader
             eyebrow="Portfolio"
@@ -118,7 +121,7 @@ export default function HomePage() {
         </div>
       </Section>
 
-      <Section>
+      <Section band="dark">
         <SectionReveal>
           <SectionHeader
             eyebrow="Process"
@@ -129,7 +132,7 @@ export default function HomePage() {
         <ProcessTimeline />
       </Section>
 
-      <Section className="border-y border-border bg-surface/30">
+      <Section band="light">
         <SectionReveal>
           <SectionHeader
             eyebrow="Stack"
@@ -140,7 +143,7 @@ export default function HomePage() {
         <TechStackLogos />
       </Section>
 
-      <Section>
+      <Section band="dark">
         <SectionReveal>
           <SectionHeader title="Frequently asked questions" />
         </SectionReveal>
@@ -149,16 +152,17 @@ export default function HomePage() {
         </div>
       </Section>
 
-      <Section className="pb-24">
-        <div className="rounded-3xl border border-primary/30 bg-gradient-to-br from-primary/10 via-surface to-background px-8 py-12 text-center md:px-16">
-          <h2 className="text-2xl font-bold text-foreground md:text-3xl">
+      <Section variant="accent" className="pb-24 md:pb-28">
+        <div className="relative overflow-hidden rounded-3xl border border-primary/25 bg-surface px-8 py-12 text-center shadow-[var(--card-shadow)] md:px-16">
+          <div className="pointer-events-none absolute -right-8 -top-8 h-32 w-32 rounded-full bg-primary/15 blur-2xl" aria-hidden />
+          <h2 className="relative text-2xl font-bold text-foreground md:text-3xl">
             Ready to build your next product?
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-muted">
+          <p className="relative mx-auto mt-4 max-w-xl text-muted">
             Tell me about your SaaS, MVP, or integration project. I&apos;ll reply
             within 24 hours.
           </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-4">
+          <div className="relative mt-8 flex flex-wrap justify-center gap-4">
             <Button href="/contact" size="lg">
               Discuss your project
             </Button>

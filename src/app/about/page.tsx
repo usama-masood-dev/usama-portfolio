@@ -1,5 +1,7 @@
 import Image from "next/image";
-import { Download, GraduationCap, Briefcase } from "lucide-react";
+import { Download } from "lucide-react";
+import { SocialLinks } from "@/components/layout/social-links";
+import { PageHero } from "@/components/ui/page-hero";
 import { SectionReveal } from "@/components/motion/section-reveal";
 import { Button } from "@/components/ui/button";
 import { IconCard } from "@/components/ui/icon-card";
@@ -47,66 +49,73 @@ const timeline: {
 
 export default function AboutPage() {
   return (
-    <Section className="pt-12 md:pt-16">
-      <div className="grid gap-12 lg:grid-cols-[280px_1fr] lg:gap-16">
-        <SectionReveal className="flex flex-col items-center text-center lg:items-start lg:text-left">
-          <div className="relative h-56 w-56 overflow-hidden rounded-2xl border-2 border-primary/30 shadow-lg">
-            <Image
-              src={images.profile}
-              alt={site.name}
-              width={400}
-              height={400}
-              className="h-full w-full object-cover"
-              priority
-            />
-          </div>
-          <h1 className="mt-6 text-3xl font-bold text-foreground">{site.name}</h1>
-          <p className="mt-2 text-sm text-primary">{site.title}</p>
-          <p className="mt-2 text-sm text-muted">{site.location}</p>
-          <Button
-            href={site.resumePath}
-            variant="secondary"
-            className="mt-6 w-full max-w-xs"
-            external
-          >
-            <Download className="h-4 w-4" />
-            Download MERN resume (PDF)
-          </Button>
-        </SectionReveal>
-
-        <div>
-          <SectionReveal>
-            <p className="text-lg text-muted">
-              Full stack developer with {site.experience} building enterprise SaaS,
-              compliance systems, and learning products — remote-friendly, based in{" "}
-              {site.location}.
-            </p>
-            <p className="mt-4 text-muted">
-              Core team experience on platforms used across 24 European countries,
-              with OpenAI and Stripe in live production. Now building Panvika Learning
-              System end-to-end for Axaon Software.
-            </p>
-          </SectionReveal>
-
-          <SectionReveal className="mt-12">
-            <h2 className="text-xl font-bold text-foreground">Core skills</h2>
-            <div className="mt-6 grid gap-4 sm:grid-cols-3">
-              {skillGroups.map((group) => (
-                <IconCard
-                  key={group.title}
-                  icon={group.icon}
-                  title={group.title}
-                  description={group.skills.join(" · ")}
-                />
-              ))}
+    <>
+      <PageHero band="dark">
+        <div className="grid gap-12 lg:grid-cols-[280px_1fr] lg:gap-16">
+          <SectionReveal className="flex flex-col items-center text-center lg:items-start lg:text-left">
+            <div className="relative h-56 w-56 overflow-hidden rounded-2xl border-2 border-primary/30 shadow-lg">
+              <Image
+                src={images.profile}
+                alt={site.name}
+                width={400}
+                height={400}
+                className="h-full w-full object-cover"
+                priority
+              />
             </div>
+            <h1 className="mt-6 text-3xl font-bold text-foreground">{site.name}</h1>
+            <p className="mt-2 text-sm text-primary">{site.title}</p>
+            <p className="mt-2 text-sm text-muted">{site.location}</p>
+            <Button
+              href={site.resumePath}
+              variant="secondary"
+              className="mt-6 w-full max-w-xs"
+              external
+            >
+              <Download className="h-4 w-4" />
+              Download resume (PDF)
+            </Button>
+            <SocialLinks className="mt-5 justify-center lg:justify-start" iconSize="sm" />
           </SectionReveal>
-        </div>
-      </div>
 
-      <SectionReveal className="mt-20">
-        <h2 className="text-2xl font-bold text-foreground">Experience</h2>
-        <div className="mt-8 space-y-6">
+          <div>
+            <SectionReveal>
+              <SectionHeader
+                align="left"
+                eyebrow="About"
+                title="Building products that ship"
+                description={`Full stack developer with ${site.experience} — enterprise SaaS, compliance, and learning platforms.`}
+                className="mb-6"
+              />
+              <p className="text-muted">
+                Core team experience on platforms used across 24 European countries,
+                with OpenAI and Stripe in live production. Now building Panvika Learning
+                System end-to-end for Axaon Software.
+              </p>
+            </SectionReveal>
+
+            <SectionReveal className="mt-12">
+              <h2 className="text-xl font-bold text-foreground">Core skills</h2>
+              <div className="mt-6 grid gap-4 sm:grid-cols-3">
+                {skillGroups.map((group) => (
+                  <IconCard
+                    key={group.title}
+                    icon={group.icon}
+                    title={group.title}
+                    description={group.skills.join(" · ")}
+                  />
+                ))}
+              </div>
+            </SectionReveal>
+          </div>
+        </div>
+      </PageHero>
+
+      <Section band="light">
+        <SectionReveal>
+          <SectionHeader align="left" title="Experience" className="mb-8" />
+        </SectionReveal>
+        <div className="space-y-6">
           {timeline.map((item) => {
             const Icon = getIcon(item.icon);
             return (
@@ -127,37 +136,13 @@ export default function AboutPage() {
             );
           })}
         </div>
-      </SectionReveal>
 
-      <SectionReveal className="mt-16">
-        <h2 className="text-2xl font-bold text-foreground">Education</h2>
-        <div className="mt-6 grid gap-4 sm:grid-cols-2">
-          <div className="flex gap-4 rounded-xl border border-border p-5">
-            <GraduationCap className="h-8 w-8 shrink-0 text-primary" />
-            <div>
-              <p className="font-medium text-foreground">Bachelor&apos;s Degree</p>
-              <p className="text-sm text-muted">
-                Government College University Faisalabad (GCUF) · 2023
-              </p>
-            </div>
-          </div>
-          <div className="flex gap-4 rounded-xl border border-border p-5">
-            <Briefcase className="h-8 w-8 shrink-0 text-primary" />
-            <div>
-              <p className="font-medium text-foreground">
-                Web Development — 6 Month Course
-              </p>
-              <p className="text-sm text-muted">104Digital Institute · 2023</p>
-            </div>
-          </div>
+        <div className="mt-16 text-center">
+          <Button href="/contact" size="lg">
+            Let&apos;s work together
+          </Button>
         </div>
-      </SectionReveal>
-
-      <div className="mt-16 text-center">
-        <Button href="/contact" size="lg">
-          Let&apos;s work together
-        </Button>
-      </div>
-    </Section>
+      </Section>
+    </>
   );
 }

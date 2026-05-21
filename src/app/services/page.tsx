@@ -2,6 +2,7 @@ import Image from "next/image";
 import { FileText } from "lucide-react";
 import { CatalogCard } from "@/components/catalog/catalog-card";
 import { ProcessTimeline } from "@/components/home/process-timeline";
+import { PageHero } from "@/components/ui/page-hero";
 import { SectionReveal } from "@/components/motion/section-reveal";
 import { Button } from "@/components/ui/button";
 import { IconCard } from "@/components/ui/icon-card";
@@ -20,7 +21,7 @@ const clientNeeds = [
 export default function ServicesPage() {
   return (
     <>
-      <Section className="border-b border-border pt-12 md:pt-16">
+      <PageHero band="dark">
         <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
           <SectionReveal>
             <SectionHeader
@@ -42,7 +43,7 @@ export default function ServicesPage() {
             </div>
           </SectionReveal>
           <SectionReveal delay={0.1}>
-            <div className="overflow-hidden rounded-2xl border border-border">
+            <div className="overflow-hidden rounded-2xl border border-border shadow-[var(--card-shadow)]">
               <Image
                 src={images.heroCode}
                 alt="Development workspace"
@@ -53,9 +54,9 @@ export default function ServicesPage() {
             </div>
           </SectionReveal>
         </div>
-      </Section>
+      </PageHero>
 
-      <Section id="catalog" className="bg-surface/30">
+      <Section id="catalog" band="light">
         <SectionReveal>
           <SectionHeader
             align="left"
@@ -75,8 +76,8 @@ export default function ServicesPage() {
         </p>
       </Section>
 
-      <Section>
-        <div className="grid gap-12 lg:grid-cols-2">
+      <Section band="dark">
+        <div className="mx-auto max-w-3xl space-y-16">
           <SectionReveal>
             <SectionHeader
               align="left"
@@ -99,11 +100,7 @@ export default function ServicesPage() {
             </ul>
           </SectionReveal>
           <SectionReveal delay={0.1}>
-            <SectionHeader
-              align="left"
-              title="Delivery process"
-              className="mb-6"
-            />
+            <SectionHeader align="left" title="Delivery process" className="mb-6" />
             <ProcessTimeline />
           </SectionReveal>
         </div>

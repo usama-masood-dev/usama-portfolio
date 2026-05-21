@@ -1,3 +1,9 @@
+import {
+  SectionBackdrop,
+  getSectionSurfaceClass,
+  type SectionBand,
+  type SectionVariant,
+} from "@/components/ui/section-backdrop";
 import { cn } from "@/lib/utils";
 
 type SectionProps = {
@@ -5,6 +11,11 @@ type SectionProps = {
   className?: string;
   children: React.ReactNode;
   containerClassName?: string;
+  /** dark / light alternating bands */
+  band?: SectionBand;
+  /** accent = CTA strip; hero = only for custom hero blocks */
+  variant?: SectionVariant;
+  dividerTop?: boolean;
 };
 
 export function Section({
@@ -12,12 +23,25 @@ export function Section({
   className,
   children,
   containerClassName,
+  band,
+  variant,
+  dividerTop: _dividerTop,
 }: SectionProps) {
+  const surfaceVariant = variant ?? band;
+
   return (
-    <section id={id} className={cn("py-16 md:py-24", className)}>
+    <section
+      id={id}
+      className={cn(
+        "relative overflow-hidden py-16 md:py-24",
+        getSectionSurfaceClass(band, surfaceVariant),
+        className,
+      )}
+    >
+      <SectionBackdrop band={band} variant={surfaceVariant} />
       <div
         className={cn(
-          "mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8",
+          "relative mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8",
           containerClassName,
         )}
       >

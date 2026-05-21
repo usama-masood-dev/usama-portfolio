@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { BrowserFrame } from "@/components/ui/browser-frame";
 import { MetricChip } from "@/components/ui/metric-chip";
+import { PageHero } from "@/components/ui/page-hero";
 import { Section } from "@/components/ui/section";
 import { getProjectBySlug, projects } from "@/lib/projects";
 
@@ -34,8 +35,7 @@ export default async function CaseStudyPage({ params }: Props) {
 
   return (
     <>
-      <div className="border-b border-border bg-surface/30 py-10 md:py-14">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <PageHero>
           <Link
             href="/work"
             className="mb-6 inline-flex items-center gap-2 text-sm text-muted transition hover:text-primary"
@@ -71,10 +71,9 @@ export default async function CaseStudyPage({ params }: Props) {
               <MetricChip key={m.label} value={m.value} label={m.label} />
             ))}
           </div>
-        </div>
-      </div>
+      </PageHero>
 
-      <Section className="pt-10">
+      <Section band="light" className="pt-10">
         <BrowserFrame
           src={project.coverImage}
           alt={`${project.title} main screenshot`}
@@ -82,7 +81,7 @@ export default async function CaseStudyPage({ params }: Props) {
         />
       </Section>
 
-      <Section className="pt-0">
+      <Section band="dark" className="pt-0">
         <div className="mx-auto max-w-5xl space-y-16">
           <div>
             <h2 className="text-lg font-semibold text-foreground">Gallery</h2>

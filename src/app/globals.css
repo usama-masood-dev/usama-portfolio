@@ -15,6 +15,8 @@
   --accent: #06b6d4;
   --ring: #0891b2;
   --card-shadow: 0 1px 3px rgb(15 23 42 / 0.08);
+  --section-dark: #f1f5f9;
+  --section-light: #ffffff;
 }
 
 .dark {
@@ -22,6 +24,8 @@
   --foreground: #f8fafc;
   --surface: #111827;
   --surface-elevated: #1e293b;
+  --section-dark: #0a0f1e;
+  --section-light: #151b2e;
   --muted: #94a3b8;
   --border: #1e293b;
   --primary: #22d3ee;
@@ -44,6 +48,8 @@
   --color-primary-foreground: var(--primary-foreground);
   --color-accent: var(--accent);
   --color-ring: var(--ring);
+  --color-section-dark: var(--section-dark);
+  --color-section-light: var(--section-light);
   --font-sans: var(--font-inter);
   --font-mono: var(--font-geist-mono);
 }
@@ -60,6 +66,28 @@ body {
 
 ::selection {
   background: color-mix(in srgb, var(--primary) 35%, transparent);
+}
+
+/* Section background patterns */
+.section-bg-grid {
+  background-image:
+    linear-gradient(to right, color-mix(in srgb, var(--border) 55%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--border) 55%, transparent) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 85% 70% at 50% 50%, black 15%, transparent 72%);
+}
+
+.section-bg-dots {
+  background-image: radial-gradient(
+    color-mix(in srgb, var(--primary) 22%, transparent) 1px,
+    transparent 1px
+  );
+  background-size: 24px 24px;
+  mask-image: linear-gradient(to bottom, black 0%, black 55%, transparent 100%);
+}
+
+.section-bg-noise {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
 }
 
 .embla__viewport {

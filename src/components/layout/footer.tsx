@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { SocialLinks } from "@/components/layout/social-links";
 import { navLinks, site } from "@/lib/site";
 
 export function Footer() {
@@ -12,6 +13,7 @@ export function Footer() {
             <p className="text-lg font-semibold text-foreground">{site.name}</p>
             <p className="mt-2 max-w-xs text-sm text-muted">{site.tagline}</p>
             <p className="mt-4 text-sm text-muted">{site.location}</p>
+            <SocialLinks className="mt-5" iconSize="sm" />
           </div>
 
           <div>
