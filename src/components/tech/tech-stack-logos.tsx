@@ -1,0 +1,49 @@
+import Image from "next/image";
+import { cn } from "@/lib/utils";
+
+const techLogos: { name: string; slug: string; color?: string }[] = [
+  { name: "React", slug: "react", color: "61DAFB" },
+  { name: "Next.js", slug: "nextdotjs" },
+  { name: "Node.js", slug: "nodedotjs", color: "339933" },
+  { name: "TypeScript", slug: "typescript", color: "3178C6" },
+  { name: "MongoDB", slug: "mongodb", color: "47A248" },
+  { name: "Express", slug: "express", color: "000000" },
+  { name: "OpenAI", slug: "openai" },
+  { name: "Stripe", slug: "stripe", color: "635BFF" },
+  { name: "Tailwind CSS", slug: "tailwindcss", color: "06B6D4" },
+  { name: "AWS", slug: "amazonaws", color: "FF9900" },
+  { name: "PostgreSQL", slug: "postgresql", color: "4169E1" },
+  { name: "Redis", slug: "redis", color: "FF4438" },
+];
+
+function logoUrl(slug: string) {
+  return `https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/${slug}.svg`;
+}
+
+export function TechStackLogos({ className }: { className?: string }) {
+  return (
+    <div
+      className={cn(
+        "flex flex-wrap items-center justify-center gap-3 md:gap-4",
+        className,
+      )}
+    >
+      {techLogos.map((tech) => (
+        <div
+          key={tech.name}
+          title={tech.name}
+          className="group flex h-14 w-14 items-center justify-center rounded-xl border border-border bg-surface transition hover:border-primary/40 hover:bg-primary/5 md:h-16 md:w-16"
+        >
+          <Image
+            src={logoUrl(tech.slug)}
+            alt={tech.name}
+            width={28}
+            height={28}
+            className="h-7 w-7 opacity-70 transition group-hover:opacity-100 dark:invert"
+            unoptimized
+          />
+        </div>
+      ))}
+    </div>
+  );
+}

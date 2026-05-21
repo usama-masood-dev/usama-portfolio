@@ -1,65 +1,175 @@
-import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight, Sparkles } from "lucide-react";
+import { CatalogCard } from "@/components/catalog/catalog-card";
+import { BentoHighlight } from "@/components/home/bento-highlight";
+import { HeroVisual } from "@/components/home/hero-visual";
+import { ProcessTimeline } from "@/components/home/process-timeline";
+import { ProofStrip } from "@/components/home/proof-strip";
+import { ProjectCarousel } from "@/components/home/project-carousel";
+import { SectionReveal, StaggerChildren, StaggerItem } from "@/components/motion/section-reveal";
+import { TechStackLogos } from "@/components/tech/tech-stack-logos";
+import { Accordion } from "@/components/ui/accordion";
+import { Button } from "@/components/ui/button";
+import { IconCard } from "@/components/ui/icon-card";
+import { Section, SectionHeader } from "@/components/ui/section";
+import { catalogItems } from "@/lib/catalog";
+import { faqs, site, whatIBuild } from "@/lib/site";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <>
+      <section className="relative overflow-hidden border-b border-border">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/15 via-transparent to-transparent" />
+        <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:px-8 lg:py-24">
+          <SectionReveal>
+            <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-sm text-primary">
+              <Sparkles className="h-4 w-4" />
+              {site.availability}
+            </p>
+            <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-[3.25rem] lg:leading-tight">
+              I build{" "}
+              <span className="text-primary">AI-powered SaaS</span> that ships to
+              production.
+            </h1>
+            <p className="mt-5 text-lg text-muted">{site.tagline}</p>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <Button href="/contact" size="lg">
+                Discuss your project
+              </Button>
+              <Button href="/work" variant="secondary" size="lg">
+                View my work
+              </Button>
+            </div>
+          </SectionReveal>
+          <HeroVisual />
+        </div>
+      </section>
+
+      <Section className="border-b border-border bg-surface/50 py-12">
+        <ProofStrip />
+      </Section>
+
+      <Section>
+        <SectionReveal>
+          <BentoHighlight />
+        </SectionReveal>
+      </Section>
+
+      <Section id="expertise">
+        <SectionReveal>
+          <SectionHeader
+            eyebrow="Expertise"
+            title="What I build"
+            description="Scan by area — details live in case studies and catalog."
+          />
+        </SectionReveal>
+        <StaggerChildren className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {whatIBuild.map((item) => (
+            <StaggerItem key={item.title}>
+              <IconCard
+                icon={item.icon}
+                title={item.title}
+                description={item.description}
+              />
+            </StaggerItem>
+          ))}
+        </StaggerChildren>
+      </Section>
+
+      <Section id="catalog" className="bg-surface/30">
+        <SectionReveal>
+          <SectionHeader
+            eyebrow="Deliverables"
+            title="Project catalog"
+            description="Fixed offerings — request a quote after we align on scope."
+          />
+        </SectionReveal>
+        <div className="grid gap-6 md:grid-cols-3">
+          {catalogItems.slice(0, 3).map((item) => (
+            <CatalogCard key={item.id} item={item} compact />
+          ))}
+        </div>
+        <div className="mt-8 text-center">
+          <Link
+            href="/services"
+            className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:gap-3 transition-all"
+          >
+            View all deliverables
+            <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
+      </Section>
+
+      <Section id="work">
+        <SectionReveal>
+          <SectionHeader
+            eyebrow="Portfolio"
+            title="Featured projects"
+            description="Swipe to explore — full case studies with screenshots."
+          />
+        </SectionReveal>
+        <SectionReveal delay={0.1}>
+          <ProjectCarousel />
+        </SectionReveal>
+        <div className="mt-8 text-center">
+          <Button href="/work" variant="secondary">
+            All case studies
+          </Button>
+        </div>
+      </Section>
+
+      <Section>
+        <SectionReveal>
+          <SectionHeader
+            eyebrow="Process"
+            title="How I work"
+            description="Four steps from idea to deployed product."
+          />
+        </SectionReveal>
+        <ProcessTimeline />
+      </Section>
+
+      <Section className="border-y border-border bg-surface/30">
+        <SectionReveal>
+          <SectionHeader
+            eyebrow="Stack"
+            title="Technologies"
+            description="Tools I use daily on production SaaS and APIs."
+          />
+        </SectionReveal>
+        <TechStackLogos />
+      </Section>
+
+      <Section>
+        <SectionReveal>
+          <SectionHeader title="Frequently asked questions" />
+        </SectionReveal>
+        <div className="mx-auto max-w-3xl">
+          <Accordion items={faqs} />
+        </div>
+      </Section>
+
+      <Section className="pb-24">
+        <div className="rounded-3xl border border-primary/30 bg-gradient-to-br from-primary/10 via-surface to-background px-8 py-12 text-center md:px-16">
+          <h2 className="text-2xl font-bold text-foreground md:text-3xl">
+            Ready to build your next product?
+          </h2>
+          <p className="mx-auto mt-4 max-w-xl text-muted">
+            Tell me about your SaaS, MVP, or integration project. I&apos;ll reply
+            within 24 hours.
           </p>
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
+            <Button href="/contact" size="lg">
+              Discuss your project
+            </Button>
+            {site.calendly && (
+              <Button href={site.calendly} variant="secondary" size="lg" external>
+                Book a 15-min call
+              </Button>
+            )}
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+      </Section>
+    </>
   );
 }
