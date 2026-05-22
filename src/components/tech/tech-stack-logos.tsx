@@ -20,30 +20,54 @@ function logoUrl(slug: string) {
   return `https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/${slug}.svg`;
 }
 
-export function TechStackLogos({ className }: { className?: string }) {
+function TechLogo({
+  tech,
+  className,
+}: {
+  tech: (typeof techLogos)[number];
+  className?: string;
+}) {
   return (
     <div
+      title={tech.name}
       className={cn(
-        "flex flex-wrap items-center justify-center gap-3 md:gap-4",
+        "group flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border border-border bg-surface transition hover:border-primary/40 hover:bg-primary/5 md:h-16 md:w-16",
         className,
       )}
     >
-      {techLogos.map((tech) => (
-        <div
-          key={tech.name}
-          title={tech.name}
-          className="group flex h-14 w-14 items-center justify-center rounded-xl border border-border bg-surface transition hover:border-primary/40 hover:bg-primary/5 md:h-16 md:w-16"
-        >
-          <Image
-            src={logoUrl(tech.slug)}
-            alt={tech.name}
-            width={28}
-            height={28}
-            className="h-7 w-7 opacity-70 transition group-hover:opacity-100 dark:invert"
-            unoptimized
-          />
+      <Image
+        src={logoUrl(tech.slug)}
+        alt={tech.name}
+        width={28}
+        height={28}
+        className="h-7 w-7 opacity-70 transition group-hover:opacity-100 dark:invert"
+        unoptimized
+      />
+    </div>
+  );
+}
+
+export function TechStackLogos({ className }: { className?: string }) {
+  const track = [...techLogos, ...techLogos];
+
+  return (
+    <div
+      className={cn("relative py-2", className)}
+      aria-label="Technologies"
+      role="region"
+    >
+      <div className="tech-marquee-mask tech-marquee-animate overflow-hidden">
+        <div className="tech-marquee-track gap-3 md:gap-4">
+          {track.map((tech, index) => (
+            <TechLogo key={`${tech.slug}-${index}`} tech={tech} />
+          ))}
         </div>
-      ))}
+      </div>
+      <div className="tech-marquee-static hidden flex-wrap items-center justify-center gap-3 md:gap-4">
+        {techLogos.map((tech) => (
+          <TechLogo key={tech.slug} tech={tech} />
+        ))}
+      </div>
     </div>
   );
 }

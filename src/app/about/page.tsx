@@ -113,6 +113,14 @@ export default function AboutPage() {
 
       <Section band="light">
         <SectionReveal>
+          <p className="max-w-3xl text-muted">
+            My process is simple: I write code that ships, not just runs locally.
+            Every project includes complete source code, full documentation, and
+            production deployment. I work in milestones so you see progress at every
+            stage — no black boxes, no surprises.
+          </p>
+        </SectionReveal>
+        <SectionReveal className="mt-12">
           <SectionHeader align="left" title="Experience" className="mb-8" />
         </SectionReveal>
         <div className="space-y-6">

@@ -22,7 +22,7 @@ export default function ContactPage() {
             align="left"
             eyebrow="Contact"
             title="Tell me about your project"
-            description="I usually reply within 24 hours."
+            description="I reply within 24 hours. Most proposals get a response within 1 hour."
             className="mb-0"
           />
         </SectionReveal>
