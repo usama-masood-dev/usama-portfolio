@@ -35,7 +35,7 @@ export const site = {
   availability: "Open for SaaS, MVP, and AI integration projects",
   links: {
     email: "mailto:usamamasood.dev@gmail.com",
-    linkedin: "https://www.linkedin.com/in/usama-masood",
+    linkedin: "https://www.linkedin.com/in/usama-masood-dev/",
     github: "https://github.com/usama-masood-dev",
     upwork: "",
     fiverr: "",
