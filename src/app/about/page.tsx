@@ -57,9 +57,11 @@ export default function AboutPage() {
               <Image
                 src={images.profile}
                 alt={site.name}
-                width={400}
-                height={400}
-                className="h-full w-full object-cover"
+                fill
+                sizes="224px"
+                quality={90}
+                unoptimized
+                className="object-cover"
                 priority
               />
             </div>

@@ -9,6 +9,8 @@ import { IconCard } from "@/components/ui/icon-card";
 import { Section, SectionHeader } from "@/components/ui/section";
 import { catalogItems } from "@/lib/catalog";
 import { images } from "@/lib/images";
+import { portfolioAspectClass } from "@/lib/media";
+import { cn } from "@/lib/utils";
 import { servicePillars } from "@/lib/site";
 
 const clientNeeds = [
@@ -43,13 +45,20 @@ export default function ServicesPage() {
             </div>
           </SectionReveal>
           <SectionReveal delay={0.1}>
-            <div className="overflow-hidden rounded-2xl border border-border shadow-[var(--card-shadow)]">
+            <div
+              className={cn(
+                "relative w-full overflow-hidden rounded-2xl border border-border shadow-[var(--card-shadow)]",
+                portfolioAspectClass,
+              )}
+            >
               <Image
                 src={images.heroCode}
                 alt="Development workspace"
-                width={800}
-                height={500}
-                className="h-64 w-full object-cover md:h-80"
+                fill
+                sizes="(max-width: 1024px) 100vw, 512px"
+                quality={90}
+                unoptimized
+                className="object-cover"
               />
             </div>
           </SectionReveal>

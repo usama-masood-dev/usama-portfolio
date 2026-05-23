@@ -1,4 +1,5 @@
 import { OptimizedImage } from "@/components/ui/optimized-image";
+import { portfolioAspectClass } from "@/lib/media";
 import { cn } from "@/lib/utils";
 
 export function BrowserFrame({
@@ -6,11 +7,14 @@ export function BrowserFrame({
   alt,
   className,
   priority,
+  fit = "cover",
 }: {
   src: string;
   alt: string;
   className?: string;
   priority?: boolean;
+  /** cover = fill frame (hero photos); contain = full screenshot (exact 1920×912) */
+  fit?: "cover" | "contain";
 }) {
   return (
     <div
@@ -30,11 +34,15 @@ export function BrowserFrame({
       <OptimizedImage
         src={src}
         alt={alt}
-        width={1200}
-        height={750}
         priority={priority}
-        wrapperClassName="aspect-[16/10]"
-        className="h-full w-full"
+        sizes="(max-width: 1024px) 100vw, 1024px"
+        wrapperClassName={cn(
+          portfolioAspectClass,
+          fit === "contain" && "bg-surface-elevated",
+        )}
+        className={cn(
+          fit === "cover" ? "object-cover" : "object-contain p-1 sm:p-2",
+        )}
       />
     </div>
   );

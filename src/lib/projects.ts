@@ -128,51 +128,115 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: "panvika-learning-system",
-    title: "Panvika Learning System",
-    subtitle: "Udemy-like LMS SaaS platform",
-    category: "E-Learning",
-    company: "Axaon Software · London",
-    status: "In progress",
+    slug: "thebrandvue",
+    title: "The Brand Vue",
+    subtitle: "Marketing agency site · Headless WordPress CMS",
+    category: "CMS",
+    company: "The Brand Vue · Islamabad",
+    status: "Live",
     excerpt:
-      "Full LMS SaaS from scratch — architecture through deployment, sole ownership.",
+      "Next.js marketing website with headless WordPress — the client team publishes projects, testimonials, and services without developer help.",
     highlights: [
-      "Multi-role instructor & student dashboards",
-      "Courses, quizzes, enrollments",
-      "End-to-end full stack ownership",
+      "Next.js + headless WordPress",
+      "Self-serve content for projects & testimonials",
+      "Built for Islamabad marketing agency",
     ],
-    role: "Sole full stack developer — architecture through deployment.",
+    role: "Full stack developer — frontend, CMS integration, and content architecture.",
     built: [
       {
-        lead: "Platform UI",
-        detail: "Custom home page and instructor/student dashboards.",
+        lead: "Headless CMS",
+        detail:
+          "WordPress as content backend with structured content types for projects, testimonials, and services.",
       },
       {
-        lead: "Learning features",
-        detail: "Courses, quizzes, enrollments, wishlist, withdrawals.",
+        lead: "Next.js frontend",
+        detail:
+          "Fast, SEO-friendly pages with dynamic routing and optimized media delivery.",
       },
       {
-        lead: "Backend",
-        detail: "API and database architecture built from scratch.",
+        lead: "Client control",
+        detail:
+          "Non-technical staff can add and update portfolio work, social proof, and service listings.",
+      },
+      {
+        lead: "Brand experience",
+        detail:
+          "Custom UI aligned with The Brand Vue identity for an Islamabad-based creative agency.",
       },
     ],
-    stack: ["Next.js", "Node.js", "MongoDB", "TypeScript", "Tailwind CSS"],
+    stack: [
+      "Next.js",
+      "TypeScript",
+      "WordPress",
+      "Headless CMS",
+      "REST API",
+      "Tailwind CSS",
+    ],
     results: [
-      "Production-ready SaaS architecture",
-      "Built for London-based product company",
-      "Full MVP-to-product capability",
+      "Client-owned content updates without code deploys",
+      "Projects, testimonials, and services managed in one CMS",
+      "Production-ready marketing site for local agency",
     ],
-    coverImage: projectImages["panvika-learning-system"].cover,
-    gallery: [...projectImages["panvika-learning-system"].gallery],
+    coverImage: projectImages.thebrandvue.cover,
+    gallery: [...projectImages.thebrandvue.gallery],
     metrics: [
-      { value: "100%", label: "Ownership" },
-      { value: "LMS", label: "Full platform" },
-      { value: "Next.js", label: "Modern stack" },
+      { value: "CMS", label: "WordPress headless" },
+      { value: "Next.js", label: "Modern frontend" },
+      { value: "Live", label: "Client content control" },
     ],
   },
+  // {
+  //   slug: "panvika-learning-system",
+  //   title: "Panvika Learning System",
+  //   subtitle: "Udemy-like LMS SaaS platform",
+  //   category: "E-Learning",
+  //   company: "Axaon Software · London",
+  //   status: "In progress",
+  //   excerpt:
+  //     "Full LMS SaaS from scratch — architecture through deployment, sole ownership.",
+  //   highlights: [
+  //     "Multi-role instructor & student dashboards",
+  //     "Courses, quizzes, enrollments",
+  //     "End-to-end full stack ownership",
+  //   ],
+  //   role: "Sole full stack developer — architecture through deployment.",
+  //   built: [
+  //     {
+  //       lead: "Platform UI",
+  //       detail: "Custom home page and instructor/student dashboards.",
+  //     },
+  //     {
+  //       lead: "Learning features",
+  //       detail: "Courses, quizzes, enrollments, wishlist, withdrawals.",
+  //     },
+  //     {
+  //       lead: "Backend",
+  //       detail: "API and database architecture built from scratch.",
+  //     },
+  //   ],
+  //   stack: ["Next.js", "Node.js", "MongoDB", "TypeScript", "Tailwind CSS"],
+  //   results: [
+  //     "Production-ready SaaS architecture",
+  //     "Built for London-based product company",
+  //     "Full MVP-to-product capability",
+  //   ],
+  //   coverImage: projectImages["panvika-learning-system"].cover,
+  //   gallery: [...projectImages["panvika-learning-system"].gallery],
+  //   metrics: [
+  //     { value: "100%", label: "Ownership" },
+  //     { value: "LMS", label: "Full platform" },
+  //     { value: "Next.js", label: "Modern stack" },
+  //   ],
+  // },
 ];
 
-export const projectCategories = ["All", "SaaS", "Compliance", "E-Learning"] as const;
+export const projectCategories = [
+  "All",
+  "SaaS",
+  "CMS",
+  "Compliance",
+  "E-Learning",
+] as const;
 
 export function getProjectBySlug(slug: string): Project | undefined {
   return projects.find((p) => p.slug === slug);

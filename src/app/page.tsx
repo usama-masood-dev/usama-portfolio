@@ -1,10 +1,11 @@
 import Link from "next/link";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { CatalogCard } from "@/components/catalog/catalog-card";
 import { BentoHighlight } from "@/components/home/bento-highlight";
+import { HeroBackdrop } from "@/components/home/hero-backdrop";
+import { HeroContent } from "@/components/home/hero-content";
 import { HeroVisual } from "@/components/home/hero-visual";
 import { ProcessTimeline } from "@/components/home/process-timeline";
-import { SocialLinks } from "@/components/layout/social-links";
 import { ProofStrip } from "@/components/home/proof-strip";
 import { ProjectCarousel } from "@/components/home/project-carousel";
 import { SectionBackdrop } from "@/components/ui/section-backdrop";
@@ -21,29 +22,9 @@ export default function HomePage() {
   return (
     <>
       <section className="relative overflow-hidden border-b border-border/50 bg-section-dark">
-        <SectionBackdrop variant="hero" />
+        <HeroBackdrop />
         <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:px-8 lg:py-24">
-          <SectionReveal>
-            <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-sm text-primary">
-              <Sparkles className="h-4 w-4" />
-              {site.availability}
-            </p>
-            <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-[3.25rem] lg:leading-tight">
-              I build{" "}
-              <span className="text-primary">AI-powered SaaS</span> that ships to
-              production.
-            </h1>
-            <p className="mt-5 text-lg text-muted">{site.tagline}</p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Button href="/contact" size="lg">
-                Discuss your project
-              </Button>
-              <Button href="/work" variant="secondary" size="lg">
-                View my work
-              </Button>
-            </div>
-            <SocialLinks className="mt-6" iconSize="sm" />
-          </SectionReveal>
+          <HeroContent />
           <HeroVisual />
         </div>
       </section>

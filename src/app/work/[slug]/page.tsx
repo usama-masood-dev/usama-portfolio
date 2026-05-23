@@ -77,6 +77,7 @@ export default async function CaseStudyPage({ params }: Props) {
         <BrowserFrame
           src={project.coverImage}
           alt={`${project.title} main screenshot`}
+          fit="contain"
           className="mx-auto max-w-5xl"
         />
       </Section>

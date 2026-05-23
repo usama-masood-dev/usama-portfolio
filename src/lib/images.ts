@@ -1,39 +1,83 @@
-/** Unsplash placeholders — replace with your own files in /public/projects/ later */
+/**
+ * Local assets under /public — export all covers & gallery shots at 1920×912.
+ * Panvika still uses placeholders until images are added.
+ */
 
-const u = (id: string, w = 1200) =>
+const unsplash = (id: string, w = 1200) =>
   `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`;
 
 export const images = {
-  profile: u("photo-1507003211169-0a1dd7228f2d", 600),
-  heroDashboard: u("photo-1551288049-bebda4e38f71", 1400),
-  heroCode: u("photo-1498050108023-c5249f4df085", 800),
+  profile: "/images/profile.webp",
+  heroDashboard: "/images/hero-dashboard.jpg",
+  heroCode: "/images/hero-code.jpg",
   projects: {
     "optima-crm": {
-      cover: u("photo-1560518883-ce09059eeffa", 1200),
+      cover: "/projects/optima-crm/cover.png",
       gallery: [
-        { src: u("photo-1560518883-ce09059eeffa", 1200), alt: "Real estate CRM dashboard" },
-        { src: u("photo-1553877522-43269d4ea984", 1200), alt: "Team collaboration" },
-        { src: u("photo-1551288049-bebda4e38f71", 1200), alt: "Analytics overview" },
+        { src: "/projects/optima-crm/crm-1.jpg", alt: "Optima-CRM dashboard" },
+        { src: "/projects/optima-crm/crm-2.png", alt: "Optima-CRM listings overview" },
+        {
+          src: "/projects/optima-crm/crm-3.png",
+          alt: "Optima-CRM property and listing workflow",
+        },
+        { src: "/projects/optima-crm/crm-4.png", alt: "Optima-CRM client management" },
+        { src: "/projects/optima-crm/crm-5.png", alt: "Optima-CRM team workspace" },
+        { src: "/projects/optima-crm/crm-6.png", alt: "Optima-CRM analytics view" },
+        { src: "/projects/optima-crm/crm-7.png", alt: "Optima-CRM integrations" },
+        { src: "/projects/optima-crm/crm-8.png", alt: "Optima-CRM reporting" },
+        { src: "/projects/optima-crm/crm-9.png", alt: "Optima-CRM production UI" },
       ],
     },
     "immosurance-aml": {
-      cover: u("photo-1450101499163-c8848c66ca85", 1200),
+      cover: "/projects/immosurance-aml/cover.png",
       gallery: [
-        { src: u("photo-1450101499163-c8848c66ca85", 1200), alt: "Compliance documentation" },
-        { src: u("photo-1554224154-26032ffc0d07", 1200), alt: "Secure financial workflow" },
-        { src: u("photo-1563986768609-322da13575f3", 1200), alt: "Risk and audit tracking" },
+        {
+          src: "/projects/immosurance-aml/aml-1.png",
+          alt: "Immosurance AML compliance dashboard",
+        },
+        { src: "/projects/immosurance-aml/aml-2.png", alt: "AML onboarding workflow" },
+        { src: "/projects/immosurance-aml/aml-3.png", alt: "KYC and dossier management" },
+        { src: "/projects/immosurance-aml/aml-4.png", alt: "AML workflow overview" },
+        { src: "/projects/immosurance-aml/aml-5.png", alt: "Secure compliance operations" },
+        { src: "/projects/immosurance-aml/aml-6.png", alt: "Audit and risk tracking" },
+        { src: "/projects/immosurance-aml/aml-7.png", alt: "Regulatory reporting" },
+        {
+          src: "/projects/immosurance-aml/aml-8.png",
+          alt: "Immosurance AML production interface",
+        },
+      ],
+    },
+    thebrandvue: {
+      cover: "/projects/thebrandvue/cover.png",
+      gallery: [
+        { src: "/projects/thebrandvue/brand-1.png", alt: "The Brand Vue homepage" },
+        { src: "/projects/thebrandvue/brand-2.png", alt: "Services and offerings" },
+        { src: "/projects/thebrandvue/brand-3.png", alt: "Projects portfolio" },
+        { src: "/projects/thebrandvue/brand-4.png", alt: "Client testimonials" },
+        { src: "/projects/thebrandvue/brand-5.png", alt: "Content management workflow" },
+        { src: "/projects/thebrandvue/brand-6.png", alt: "Marketing pages" },
+        { src: "/projects/thebrandvue/brand-7.png", alt: "The Brand Vue site UI" },
       ],
     },
     "panvika-learning-system": {
-      cover: u("photo-1501504901654-516559d290b5", 1200),
+      cover: unsplash("photo-1501504901654-516559d290b5", 1200),
       gallery: [
-        { src: u("photo-1501504901654-516559d290b5", 1200), alt: "Online learning platform" },
-        { src: u("photo-1522202176988-66273c2fd55f", 1200), alt: "Course and instructor tools" },
-        { src: u("photo-1516321318423-f06f85e504b3", 1200), alt: "E-learning workspace" },
+        {
+          src: unsplash("photo-1501504901654-516559d290b5", 1200),
+          alt: "Online learning platform",
+        },
+        {
+          src: unsplash("photo-1522202176988-66273c2fd55f", 1200),
+          alt: "Course and instructor tools",
+        },
+        {
+          src: unsplash("photo-1516321318423-f06f85e504b3", 1200),
+          alt: "E-learning workspace",
+        },
       ],
     },
   },
   bento: {
-    catalog: u("photo-1460925895917-afdab827c52f", 800),
+    catalog: unsplash("photo-1460925895917-afdab827c52f", 800),
   },
 } as const;
