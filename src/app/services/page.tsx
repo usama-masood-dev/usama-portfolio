@@ -56,8 +56,7 @@ export default function ServicesPage() {
                 alt="Development workspace"
                 fill
                 sizes="(max-width: 1024px) 100vw, 512px"
-                quality={90}
-                unoptimized
+                quality={80}
                 className="object-cover"
               />
             </div>

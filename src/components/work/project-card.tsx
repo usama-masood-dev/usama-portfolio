@@ -6,9 +6,6 @@ import type { Project } from "@/lib/projects";
 import { cn } from "@/lib/utils";
 
 export function ProjectCard({ project }: { project: Project }) {
-  const local =
-    project.coverImage.startsWith("/") && !project.coverImage.startsWith("//");
-
   return (
     <Link
       href={`/work/${project.slug}`}
@@ -20,8 +17,7 @@ export function ProjectCard({ project }: { project: Project }) {
           alt={project.title}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 400px"
-          quality={90}
-          unoptimized={local}
+          quality={80}
           className="object-cover transition duration-500 group-hover:scale-[1.02]"
         />
       </div>

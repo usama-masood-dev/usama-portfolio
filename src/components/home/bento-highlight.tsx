@@ -6,10 +6,6 @@ import { portfolioAspectClass } from "@/lib/media";
 import { projects } from "@/lib/projects";
 import { cn } from "@/lib/utils";
 
-function isLocalSrc(src: string) {
-  return src.startsWith("/") && !src.startsWith("//");
-}
-
 export function BentoHighlight() {
   const featured = projects[0];
 
@@ -26,8 +22,7 @@ export function BentoHighlight() {
             alt={featured.title}
             fill
             sizes="(max-width: 768px) 100vw, 66vw"
-            quality={90}
-            unoptimized={isLocalSrc(featured.coverImage)}
+            quality={80}
             className="object-cover transition duration-500 group-hover:scale-[1.02]"
           />
         </div>

@@ -9,10 +9,6 @@ import { cn } from "@/lib/utils";
 
 type GalleryImage = { src: string; alt: string };
 
-function isLocalSrc(src: string) {
-  return src.startsWith("/") && !src.startsWith("//");
-}
-
 export function ImageGallery({ images }: { images: GalleryImage[] }) {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "center" });
   const [index, setIndex] = useState(0);
@@ -55,8 +51,7 @@ export function ImageGallery({ images }: { images: GalleryImage[] }) {
                   alt={img.alt}
                   fill
                   sizes="(max-width: 1024px) 100vw, 1024px"
-                  quality={90}
-                  unoptimized={isLocalSrc(img.src)}
+                  quality={80}
                   className="object-contain p-1 sm:p-2"
                   priority={img.src === images[0]?.src}
                 />
@@ -97,7 +92,7 @@ export function ImageGallery({ images }: { images: GalleryImage[] }) {
               alt=""
               fill
               sizes="(max-width: 640px) 30vw, 160px"
-              unoptimized={isLocalSrc(img.src)}
+              quality={60}
               className="object-contain p-0.5"
             />
           </button>

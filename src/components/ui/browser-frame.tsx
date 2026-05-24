@@ -35,7 +35,7 @@ export function BrowserFrame({
         src={src}
         alt={alt}
         priority={priority}
-        sizes="(max-width: 1024px) 100vw, 1024px"
+        sizes="(max-width: 640px) 90vw, (max-width: 1024px) 50vw, 560px"
         wrapperClassName={cn(
           portfolioAspectClass,
           fit === "contain" && "bg-surface-elevated",

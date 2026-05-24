@@ -16,28 +16,25 @@ const container = {
 };
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 36 },
+  hidden: { y: 16 },
   show: {
-    opacity: 1,
     y: 0,
-    transition: { duration: 0.7, ease: easeOut },
+    transition: { duration: 0.55, ease: easeOut },
   },
 };
 
+/** Transform-only so LCP text paints immediately (no opacity/blur delay). */
 const headline = {
-  hidden: { opacity: 0, y: 52, filter: "blur(10px)" },
+  hidden: { y: 20 },
   show: {
-    opacity: 1,
     y: 0,
-    filter: "blur(0px)",
-    transition: { duration: 0.85, ease: easeOut },
+    transition: { duration: 0.55, ease: easeOut },
   },
 };
 
 const badge = {
-  hidden: { opacity: 0, y: 20, scale: 0.9 },
+  hidden: { y: 12, scale: 0.96 },
   show: {
-    opacity: 1,
     y: 0,
     scale: 1,
     transition: { type: "spring" as const, stiffness: 320, damping: 24 },

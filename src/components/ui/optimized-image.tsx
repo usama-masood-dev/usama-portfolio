@@ -8,27 +8,19 @@ type OptimizedImageProps = Omit<ImageProps, "alt"> & {
   sizes?: string;
 };
 
-function isLocalPublicSrc(src: ImageProps["src"]): boolean {
-  if (typeof src === "string") {
-    return src.startsWith("/") && !src.startsWith("//");
-  }
-  return typeof src === "object" && "src" in src;
-}
-
-/** Local UI screenshots stay sharp; remote images use Next optimization + quality */
+/** Responsive images via Next.js (WebP/AVIF + sized srcset). */
 export function OptimizedImage({
   className,
   wrapperClassName,
   alt,
   sizes = "(max-width: 1280px) 100vw, 1280px",
-  quality = 90,
+  quality = 80,
   src,
   fill,
   width,
   height,
   ...props
 }: OptimizedImageProps) {
-  const local = isLocalPublicSrc(src);
   const useFill = fill ?? Boolean(wrapperClassName && !width);
 
   if (useFill) {
@@ -40,7 +32,6 @@ export function OptimizedImage({
           fill
           sizes={sizes}
           quality={quality}
-          unoptimized={local}
           className={cn("object-cover", className)}
           {...props}
         />
@@ -57,7 +48,6 @@ export function OptimizedImage({
         height={height}
         sizes={sizes}
         quality={quality}
-        unoptimized={local}
         className={cn("object-cover", className)}
         {...props}
       />

@@ -59,8 +59,7 @@ export default function AboutPage() {
                 alt={site.name}
                 fill
                 sizes="224px"
-                quality={90}
-                unoptimized
+                quality={85}
                 className="object-cover"
                 priority
               />

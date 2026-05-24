@@ -1,16 +1,27 @@
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { CatalogCard } from "@/components/catalog/catalog-card";
 import { BentoHighlight } from "@/components/home/bento-highlight";
 import { HeroBackdrop } from "@/components/home/hero-backdrop";
 import { HeroContent } from "@/components/home/hero-content";
-import { HeroVisual } from "@/components/home/hero-visual";
+import { HeroVisualBadges } from "@/components/home/hero-visual-badges";
 import { ProcessTimeline } from "@/components/home/process-timeline";
 import { ProofStrip } from "@/components/home/proof-strip";
-import { ProjectCarousel } from "@/components/home/project-carousel";
-import { SectionBackdrop } from "@/components/ui/section-backdrop";
 import { SectionReveal, StaggerChildren, StaggerItem } from "@/components/motion/section-reveal";
-import { TechStackLogos } from "@/components/tech/tech-stack-logos";
+import { BrowserFrame } from "@/components/ui/browser-frame";
+import { images } from "@/lib/images";
+
+const ProjectCarousel = dynamic(
+  () =>
+    import("@/components/home/project-carousel").then((m) => m.ProjectCarousel),
+  { loading: () => <div className="h-80 animate-pulse rounded-2xl bg-surface" /> },
+);
+
+const TechStackLogos = dynamic(
+  () => import("@/components/tech/tech-stack-logos").then((m) => m.TechStackLogos),
+  { loading: () => <div className="h-14 animate-pulse rounded-xl bg-surface" /> },
+);
 import { Accordion } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { IconCard } from "@/components/ui/icon-card";
@@ -25,7 +36,15 @@ export default function HomePage() {
         <HeroBackdrop />
         <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:px-8 lg:py-24">
           <HeroContent />
-          <HeroVisual />
+          <div className="relative mx-auto w-full max-w-lg lg:max-w-none">
+            <BrowserFrame
+              src={images.heroDashboard}
+              alt="SaaS dashboard preview"
+              priority
+              className="relative z-10 shadow-[0_24px_48px_-12px_rgba(8,145,178,0.2)]"
+            />
+            <HeroVisualBadges />
+          </div>
         </div>
       </section>
 
