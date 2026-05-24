@@ -52,7 +52,10 @@ export default function HomePage() {
         <ProofStrip />
       </Section>
 
-      <Section band="dark">
+      <Section band="dark" aria-labelledby="highlights-heading">
+        <h2 id="highlights-heading" className="sr-only">
+          Highlights
+        </h2>
         <SectionReveal>
           <BentoHighlight />
         </SectionReveal>

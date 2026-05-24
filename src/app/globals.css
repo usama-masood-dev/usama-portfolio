@@ -11,6 +11,7 @@
   --border: #e2e8f0;
   --primary: #0891b2;
   --primary-hover: #0e7490;
+  --primary-on-soft: #0c6b82;
   --primary-foreground: #ffffff;
   --accent: #06b6d4;
   --ring: #0891b2;
@@ -30,6 +31,7 @@
   --border: #1e293b;
   --primary: #22d3ee;
   --primary-hover: #06b6d4;
+  --primary-on-soft: #22d3ee;
   --primary-foreground: #0a0f1e;
   --accent: #00d4ff;
   --ring: #22d3ee;
@@ -45,6 +47,7 @@
   --color-border: var(--border);
   --color-primary: var(--primary);
   --color-primary-hover: var(--primary-hover);
+  --color-primary-on-soft: var(--primary-on-soft);
   --color-primary-foreground: var(--primary-foreground);
   --color-accent: var(--accent);
   --color-ring: var(--ring);
@@ -153,5 +156,64 @@ body {
 @media (min-width: 1024px) {
   .embla__slide {
     flex: 0 0 calc(33.333% - 0.667rem);
+  }
+}
+
+@keyframes hero-rise {
+  from {
+    transform: translate3d(0, 16px, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes hero-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes hero-glow {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .animate-hero-rise {
+    animation: hero-rise 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .animate-hero-fade-in {
+    animation: hero-fade-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .animate-hero-glow {
+    animation: hero-glow 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .animation-delay-75 {
+    animation-delay: 75ms;
+  }
+
+  .animation-delay-150 {
+    animation-delay: 150ms;
+  }
+
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .animation-delay-250 {
+    animation-delay: 250ms;
   }
 }

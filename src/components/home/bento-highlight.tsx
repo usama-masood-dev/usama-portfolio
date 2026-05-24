@@ -28,9 +28,9 @@ export function BentoHighlight() {
         </div>
         <div className="flex flex-1 flex-col p-6 md:p-8">
           <p className="text-sm font-medium text-primary">Featured work</p>
-          <h3 className="mt-1 text-2xl font-bold text-foreground md:text-3xl">
+          <h2 className="mt-1 text-2xl font-bold text-foreground md:text-3xl">
             {featured.title}
-          </h3>
+          </h2>
           <p className="mt-2 max-w-xl text-sm text-muted md:text-base">{featured.excerpt}</p>
           <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary group-hover:gap-2 transition-all md:mt-6">
             View case study <ArrowRight className="h-4 w-4" />
@@ -56,7 +56,7 @@ export function BentoHighlight() {
         <div className="p-5">
           <Layers className="h-5 w-5 text-primary" />
           <p className="mt-2 font-semibold text-foreground">Project catalog</p>
-          <p className="text-xs text-muted">4 fixed deliverables</p>
+          <p className="text-xs text-foreground/70">4 fixed deliverables</p>
         </div>
       </Link>
 
